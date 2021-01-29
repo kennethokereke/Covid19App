@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Dimensions,
     Image,
     TextInput,
     TouchableOpacity, Platform,
-    KeyboardAvoidingView,
+    Keyboard,
+    TouchableWithoutFeedback,
 StatusBar } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -77,8 +78,12 @@ const SignupScreen = ({navigation}) => {
     return (
         
 
-      
-        <KeyboardAvoidingView style={styles.container}>
+        <TouchableWithoutFeedback onPress={() =>{
+            Keyboard.dismiss()
+            console.log('dismissed keybaord')
+        }}>
+
+        <View style={styles.container}>
             <StatusBar backgroundColor="#009387" barStyle="light-content"/>
            <View style={styles.header}>
                <Text style={styles.text_header}>Register Now</Text>
@@ -214,7 +219,9 @@ const SignupScreen = ({navigation}) => {
                 </TouchableOpacity>
                 </View>
            </Animatable.View>
-        </KeyboardAvoidingView>
+        </View>
+        </TouchableWithoutFeedback>
+
        
     )
 }

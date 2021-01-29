@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Dimensions,
     Image,
     TextInput,
     TouchableOpacity, Platform,
+    Keyboard,
+    TouchableWithoutFeedback,
 StatusBar } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -56,6 +58,11 @@ const LoginScreen = ({navigation}) => {
     }
 }
     return (
+        <TouchableWithoutFeedback onPress={() => {
+            Keyboard.dismiss()
+        }}>
+
+        
         <View style={styles.container}>
             <StatusBar backgroundColor="#009387" barStyle="light-content"/>
            <View style={styles.header}>
@@ -155,6 +162,7 @@ const LoginScreen = ({navigation}) => {
                 </View>
            </Animatable.View>
         </View>
+        </TouchableWithoutFeedback>
     )
 }
 
