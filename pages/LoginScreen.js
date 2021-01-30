@@ -140,12 +140,16 @@ const LoginScreen = ({navigation}) => {
                 </View>
                 <View style={styles.button}>
                 <LinearGradient
-                colors={['#08d4c4', '#01ab9d']}
-                style={styles.signIn}>
-                    <Text style={[styles.textSign , {color: '#fff', }]}>
+                 colors={['#08d4c4', '#01ab9d']}
+                 style={styles.signIn}>
+                    <TouchableOpacity 
+                     onPress={() => navigation.navigate('MainTab')}>
+                         <Text style={[styles.textSign , {color: '#fff', }]}>
                         Sign In
                     </Text>
+                    </TouchableOpacity>
                 </LinearGradient>
+                
                 <TouchableOpacity
                 onPress={() => navigation.navigate('SignUpScreen')}
                 style={[styles.signIn, {
