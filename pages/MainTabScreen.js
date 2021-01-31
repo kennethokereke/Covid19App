@@ -10,11 +10,13 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 import Entypo from '@expo/vector-icons/Entypo'
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 
 
-
+const dashboardStack = createStackNavigator()
+const messageStack = createStackNavigator()
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -27,7 +29,7 @@ export function MainTabScreen() {
     >
       <Tab.Screen
         name="Dashboard"
-        component={HomeScreen}
+        component={HomeStackScreen}
         options={{
           tabBarLabel: 'Dashboard',
           tabBarColor: '#009387',
@@ -39,7 +41,7 @@ export function MainTabScreen() {
      
       <Tab.Screen
         name="Messages"
-        component={ChatScreen}
+        component={MessageStackScreen}
         options={{
           tabBarLabel: 'Message',
           tabBarColor: '#009387',
@@ -51,4 +53,37 @@ export function MainTabScreen() {
     </Tab.Navigator>
   );
 }
+
+const HomeStackScreen = () => (
+<dashboardStack.Navigator screenOptions={{
+        headerStyle: {
+        backgroundColor: '#009387',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+        fontWeight: 'bold'
+        }
+    }}>
+        <dashboardStack.Screen name="Home" component={HomeScreen} options={{
+        title:'Dashboard'
+       
+        }} />
+</dashboardStack.Navigator>
+);
+
+const MessageStackScreen = () => (
+<messageStack.Navigator screenOptions={{
+        headerStyle: {
+        backgroundColor: '#009387',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+        fontWeight: 'bold'
+        }
+    }}>
+        <messageStack.Screen name="Messages" component={ChatScreen} options={{
+        
+        }} />
+</messageStack.Navigator>
+);
 
