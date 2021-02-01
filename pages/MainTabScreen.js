@@ -5,7 +5,7 @@
 import HomeScreen from './HomeScreen'
 import ChatScreen from './ChatScreen'
 import {  createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
@@ -20,7 +20,13 @@ const messageStack = createStackNavigator()
 
 const Tab = createMaterialBottomTabNavigator();
 
-export function MainTabScreen() {
+
+
+export function MainTabScreen({navigation}) {
+
+  
+
+
   return (
     <Tab.Navigator
       initialRouteName="Dashboard"
@@ -62,7 +68,8 @@ const HomeStackScreen = () => (
         headerTintColor: '#fff',
         headerTitleStyle: {
         fontWeight: 'bold'
-        }
+        },
+        headerBackTitle: "back"
     }}>
         <dashboardStack.Screen name="Home" component={HomeScreen} options={{
         title:'Dashboard'
@@ -79,7 +86,8 @@ const MessageStackScreen = () => (
         headerTintColor: '#fff',
         headerTitleStyle: {
         fontWeight: 'bold'
-        }
+        },
+        headerBackTitle: 'Back'
     }}>
         <messageStack.Screen name="Messages" component={ChatScreen} options={{
         

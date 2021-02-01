@@ -5,7 +5,8 @@ import { View, Text, StyleSheet, Dimensions,
     TouchableOpacity, Platform,
     Keyboard,
     TouchableWithoutFeedback,
-StatusBar } from 'react-native'
+StatusBar, 
+KeyboardAvoidingView} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import * as Animatable from 'react-native-animatable'
@@ -16,6 +17,7 @@ const LoginScreen = ({navigation}) => {
     const [data, setData] = useState({
         email: '',
         password: '',
+     
         check_textInputChange: false,
         secureTextEntry: true
     })
@@ -69,8 +71,12 @@ const LoginScreen = ({navigation}) => {
                <Text style={styles.text_header}>Welcome!</Text>
 
            </View>
+           
            <Animatable.View style={styles.footer}
            animation="fadeInUpBig">
+              
+
+             
                 <Text style={styles.text_footer}>Email</Text>
                 <View style={styles.action}>
                     <FontAwesome
@@ -80,6 +86,9 @@ const LoginScreen = ({navigation}) => {
                     />
                     <TextInput
                     placeholder="Your Email"
+                    autoFocus
+                    type="email"
+                    
                     style={styles.textInput}
                     autoCapitalize= "none"
                     onChangeText={(val) => checktextInputChange(val)}
@@ -143,6 +152,7 @@ const LoginScreen = ({navigation}) => {
                  colors={['#08d4c4', '#01ab9d']}
                  style={styles.signIn}>
                     <TouchableOpacity 
+
                      onPress={() => navigation.navigate('MainTab')}>
                          <Text style={[styles.textSign , {color: '#fff', }]}>
                         Sign In
@@ -164,7 +174,10 @@ const LoginScreen = ({navigation}) => {
 
                 </TouchableOpacity>
                 </View>
+                <View style={{height: 100}}/>
+               
            </Animatable.View>
+        
         </View>
         </TouchableWithoutFeedback>
     )
