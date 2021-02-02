@@ -29,6 +29,10 @@ const SignupScreen = ({navigation}) => {
         
     })
 
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const []
 
     
     
@@ -54,15 +58,16 @@ const SignupScreen = ({navigation}) => {
   
 
    const register = () => {
+    
       auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-          authUser.user.updateProfile({
-              displayName: data.name,
-              //add avatar
-              photoURL: imageUrl ||  "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
+          if(authUser.user != null) {
+              data.name = authUser.user.displayName
+              data.email = authUser.user.email
+          }
 
-          })
+        
 
       })
       .catch((error) => alert(error.message))
@@ -193,6 +198,7 @@ const checkFullnameInputChange = (val) => {
                     secureTextEntry={data.secureTextEntry ? true : false}
                     style={styles.textInput}
                     onChangeText={(val) => handlePasswordChange(val)}
+                    onSubmitEditing={register}
                     
                     />
 
@@ -228,15 +234,20 @@ const checkFullnameInputChange = (val) => {
 
                 {/* button  */}
                 <View style={styles.button}>
+
                 <LinearGradient
                 colors={['#08d4c4', '#01ab9d']}
                 style={styles.signIn}>
+                    <TouchableOpacity onPress={register}>
+
+                   
                     <Text style={[styles.textSign , {color: '#fff', }]}>
                         Sign Up
                     </Text>
+                    </TouchableOpacity>
                 </LinearGradient>
                 <TouchableOpacity
-                onPress={register}
+                
 
                 style={[styles.signIn, {
                     borderColor: '#009387',
