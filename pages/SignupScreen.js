@@ -29,16 +29,6 @@ const SignupScreen = ({navigation}) => {
         
     })
 
-    // const [name, setName] = useState("")
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
-    // const [check_textInputChange, setCheck_textInputChange] = useState(false)
-    // const [ check_fullNameChange,  setCheck_fullNameChange] = useState(false)
-    // const [secureTextEntry, setSecureTextEntry] = useState(true)
-   
-
-    
-    
 
    const handlePasswordChange = (val) => {
        setData({
@@ -49,7 +39,6 @@ const SignupScreen = ({navigation}) => {
    }
 
    
-
    const updateSecureTextEntry = (val) => {
        setData({
            ...data,
@@ -68,14 +57,15 @@ const SignupScreen = ({navigation}) => {
       .createUserWithEmailAndPassword(email, password)
       .then((authUser)=> {
           authUser.user.updateProfile({
-              displayName: name
+              displayName: name,
           })
       })
       
       .catch((error) => alert(error.message))
 }
 
- const checktextInputChange = (val) => {
+
+const checktextInputChange = (val) => {
         if(val.length !== 0 ) {
             setData({
                 ...data,
