@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Dimensions,
     Image,
     TextInput,
@@ -12,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import * as Animatable from 'react-native-animatable'
 import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import { auth } from 'firebase';
 
 const LoginScreen = ({navigation}) => {
     const [data, setData] = useState({
@@ -21,6 +22,8 @@ const LoginScreen = ({navigation}) => {
         check_textInputChange: false,
         secureTextEntry: true
     })
+
+   
 
    const handlePasswordChange = (val) => {
        setData({

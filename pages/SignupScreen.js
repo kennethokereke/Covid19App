@@ -30,18 +30,7 @@ const SignupScreen = ({navigation}) => {
     })
 
 
-    useEffect(() => {
-        // if user is here then push them to the homepage
-        const unSubscribe = auth.onAuthStateChanged((authUser) => {
-            if(authUser) {
-                navigation.replace("MainTab")
-            }
-        })
-        //make sure it doesnt rerender or remounts we unsubscrube for performance issue
-        //add a clean up function
-        return unSubscribe
-
-    }, [])
+    
     
 
    const handlePasswordChange = (val) => {
