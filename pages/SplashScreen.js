@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View,
          Text,
         Button,
@@ -12,9 +12,23 @@ import Svg, { Path} from 'react-native-svg'
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import * as Animatable from 'react-native-animatable'
+import { auth } from '../Config/Firebase';
 
 
 const SplashScreen = ({navigation}) => {
+
+
+    useEffect(()=> {
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            if(authUser) {
+                navigation.replace('MainTab')
+            }
+        })
+ 
+        return unsubscribe
+ 
+     }, [])
+ 
     
 
     

@@ -63,8 +63,14 @@ const SignupScreen = ({navigation}) => {
    const register = () => {
     var email = data.email
     var password = data.password
+    var name = data.name
       auth
       .createUserWithEmailAndPassword(email, password)
+      .then((authUser)=> {
+          authUser.user.updateProfile({
+              displayName: name
+          })
+      })
       
       .catch((error) => alert(error.message))
 }

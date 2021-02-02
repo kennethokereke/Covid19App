@@ -60,7 +60,7 @@ export function MainTabScreen({navigation}) {
       />
        <Tab.Screen
         name="Profile"
-        component={profileStack}
+        component={ProfileStackScreen}
         options={{
           tabBarLabel: 'Profile',
           tabBarColor: '#009387',
