@@ -4,9 +4,10 @@
 
 import HomeScreen from './HomeScreen'
 import ChatScreen from './ChatScreen'
+import ProfileScreen from './Profile'
 import {  createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import React, { useLayoutEffect } from 'react'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 
 
 import Entypo from '@expo/vector-icons/Entypo'
@@ -17,6 +18,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const dashboardStack = createStackNavigator()
 const messageStack = createStackNavigator()
+const profileStack = createStackNavigator()
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -53,6 +55,17 @@ export function MainTabScreen({navigation}) {
           tabBarColor: '#009387',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="message" color={color} size={26} />
+          ),
+        }}
+      />
+       <Tab.Screen
+        name="Profile"
+        component={profileStack}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarColor: '#009387',
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="user" color={color} size={26} />
           ),
         }}
       />
@@ -94,4 +107,21 @@ const MessageStackScreen = () => (
         }} />
 </messageStack.Navigator>
 );
+
+const ProfileStackScreen = () => (
+  <profileStack.Navigator screenOptions={{
+          headerStyle: {
+          backgroundColor: '#009387',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+          fontWeight: 'bold'
+          },
+          headerBackTitle: 'Back'
+      }}>
+          <profileStack.Screen name="Profile" component={ProfileScreen} options={{
+          
+          }} />
+  </profileStack.Navigator>
+  );
 
