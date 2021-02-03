@@ -16,6 +16,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { Avatar } from 'react-native-elements'
 import { auth } from '../Config/Firebase'
 import ProfileScreenEdit from './ProfileScreenEdit'
+import Profile from './Profile'
 
 
 
@@ -24,6 +25,7 @@ import ProfileScreenEdit from './ProfileScreenEdit'
 const dashboardStack = createStackNavigator()
 const messageStack = createStackNavigator()
 const profileStack = createStackNavigator()
+
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -162,40 +164,24 @@ const ProfileStackScreen = ({navigation}) => (
             
             color="white"
             
-            onPress={() => navigation.navigate('EditProfile') }
+            
             />
               </View>
           ),
           
       }}>
+        <profileStack.Screen name="Profile" component={Profile} options={{
+        
+        
+      }} />
 
-        <profileStack.Screen
-        name = "EditProfile"
-        options={{
-          title: 'Edit Profile',
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-               <View style={{flexDirection: 'row', paddingLeft: 15, alignItems: 'center'}}>
-              <MaterialCommunityIcons name="arrow-left" color="white" size={20}/>
-               <Text style={{color: 'white', fontWeight: '500', marginLeft: 15}}>Go Back</Text>
-            </View>
-            </TouchableOpacity>
-           
-           
-          ),
-
-          headerRight: () => (
-            null
-          )
-
-        }}
-       
-        component={ProfileScreenEdit}
-        />
-          <profileStack.Screen name="Profile" component={ProfileScreen} options={{
-          
-          }} />
+     
   </profileStack.Navigator>
+
+
+  
 );
+
+
 
   

@@ -17,7 +17,7 @@ import {
 
 
 
-const ProfileScreenEdit = () => {
+const ProfileScreenEdit = ({navigation}) => {
 
     const renderInner = () => (
         <View style={styles.panel}>

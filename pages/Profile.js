@@ -54,6 +54,14 @@ const Profile = ({navigation}) => {
             </View>
 
             <View style={styles.menuWrapper}>
+            <TouchableRipple onPress={() => navigation.navigate('Edit')}>
+                        <View style={styles.menuItem}>
+                           
+                            <Icon name="account-edit" color="#02d1c0" size={25} />
+                            <Text style={styles.menuItemText}>Edit Profile</Text>
+
+                        </View>
+                    </TouchableRipple>
                     <TouchableRipple onPress={() => {}}>
                         <View style={styles.menuItem}>
                            
@@ -62,6 +70,7 @@ const Profile = ({navigation}) => {
 
                         </View>
                     </TouchableRipple>
+                   
             </View>
            
         </SafeAreaView>

@@ -4,10 +4,12 @@ import SplashScreen from './SplashScreen';
 import LoginScreen from './LoginScreen'
 import SignupScreen from './SignupScreen'
 import { MainTabScreen } from './MainTabScreen';
+import ProfileScreenEdit from './ProfileScreenEdit';
 
 
 
 const Rootstack = createStackNavigator();
+
 
 const RootStackScreen = ({navigation}) => (
   
@@ -16,15 +18,17 @@ const RootStackScreen = ({navigation}) => (
         <Rootstack.Screen name="LoginScreen" component={LoginScreen}/>
         <Rootstack.Screen name="SignUpScreen" component={SignupScreen}/>
         <Rootstack.Screen  name="MainTab" component={MainTabScreen}/>
+        <Rootstack.Screen  name="Edit" component={ProfileScreenEdit}/>
        
-
-       
-
-
         </Rootstack.Navigator>
+
+
+
+
        
     )
 
+ 
 
 
 
