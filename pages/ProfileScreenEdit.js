@@ -52,12 +52,37 @@ const ProfileScreenEdit = () => {
             </View>
           </View>
           <View style={styles.action}>
+              <FontAwesome name="user-o" size={20}/>
               <TextInput
               placeholder="First name"
+              autoCorrect={false}
               placeholderTextColor="#666666"
-
+              style={styles.textInput}
               />
           </View>
+
+          <View style={styles.action}>
+              <Icon name="email-outline" size={20}/>
+              <TextInput
+              placeholder="Email"
+              keyboardType="email-address"
+              autoCorrect={false}
+              placeholderTextColor="#666666"
+              style={styles.textInput}
+              />
+          </View>
+          <View style={styles.action}>
+              <Icon name="lock" size={20}/>
+              <TextInput
+              placeholder="Password"
+              secureTextEntry={true}
+              placeholderTextColor="#666666"
+              style={styles.textInput}
+              />
+          </View>
+          <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
+          <Text style={styles.panelButtonTitle}>Submit</Text>
+          </TouchableOpacity>
         </View>
     )
 }
@@ -69,8 +94,10 @@ const styles = StyleSheet.create({
     commandButton: {
         padding: 15,
         borderRadius: 10,
-        backgroundColor: '#FFFFFF',
-        paddingTop: 20
+        backgroundColor: '#009387',
+        alignItems: 'center',
+        marginTop: 10
+
     },
     panel: {
         padding: 20,
@@ -103,18 +130,28 @@ const styles = StyleSheet.create({
         height: 30,
         marginBottom: 10
     },
-    panelButton: {
+    panelButtonTitle: {
         fontSize: 17,
         fontWeight: 'bold',
         color: 'white'
     },
+    panelButton: {
+        padding: 13,
+        borderRadius: 18,
+        backgroundColor: '#FF6347',
+        alignItems: 'center',
+        marginVertical: 7
+
+    },
+  
     action: {
        flexDirection: 'row',
-       marginTop: 10,
-       marginBottom: 10,
+       marginTop: 15,
+       marginBottom: 20,
        borderBottomWidth: 1,
-       borderBottomColor: '#f2f2f2',
-       paddingBottom: 5
+       borderBottomColor: '#a6a6a6',
+       paddingBottom: 5,
+       marginLeft: 20
     },
     actionError: {
         flexDirection: 'row',
@@ -126,7 +163,7 @@ const styles = StyleSheet.create({
     textInput: {
         flex:1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
-        paddingLeft: 10,
+        paddingLeft: 20,
         color: '#05375a'
     }
 })
