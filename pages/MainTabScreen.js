@@ -12,6 +12,8 @@ import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 
 import Entypo from '@expo/vector-icons/Entypo'
 import { createStackNavigator } from '@react-navigation/stack';
+import { View } from 'react-native'
+import { Avatar } from 'react-native-elements'
 
 
 
@@ -100,9 +102,19 @@ const MessageStackScreen = () => (
         headerTitleStyle: {
         fontWeight: 'bold'
         },
-        headerBackTitle: 'Back'
+        headerBackTitle: 'Back',
+        headerLeft: () => (
+           <View style={{marginLeft: 20}}>
+          <Avatar 
+           rounded 
+           source={{ uri: "http://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png" }}/>
+           </View>)
+        
+       
+       
     }}>
         <messageStack.Screen name="Messages" component={ChatScreen} options={{
+        
         
         }} />
 </messageStack.Navigator>

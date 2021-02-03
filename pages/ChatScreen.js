@@ -1,10 +1,15 @@
-import React from 'react'
-import { View, Text , SafeAreaView} from 'react-native'
+import React, { useLayoutEffect } from 'react'
+import { View, Text , SafeAreaView, ScrollView} from 'react-native'
+import Customlistitem from '../Component/CustomListItem'
 
-const ChatScreen = () => {
+const ChatScreen = ({navigation}) => {
+    
+
     return (
         <SafeAreaView>
-            <Text>Hello</Text>
+           <ScrollView>
+               <Customlistitem  />
+           </ScrollView>
         </SafeAreaView>
     )
 }
