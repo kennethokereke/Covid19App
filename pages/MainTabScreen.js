@@ -11,9 +11,12 @@ import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 
 
 import Entypo from '@expo/vector-icons/Entypo'
-import { createStackNavigator } from '@react-navigation/stack';
-import { View } from 'react-native'
+import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { View, Text, TouchableOpacity } from 'react-native'
 import { Avatar } from 'react-native-elements'
+import { auth } from '../Config/Firebase'
+import ProfileScreenEdit from './ProfileScreenEdit'
+
 
 
 
@@ -26,20 +29,28 @@ const Tab = createMaterialBottomTabNavigator();
 
 
 
-export function MainTabScreen({navigation}) {
+
+
+export function MainTabScreen() {
+
+
 
   
-
+  
 
   return (
+  
     <Tab.Navigator
       initialRouteName="Dashboard"
       activeColor="#fff"
       barStyle={{ backgroundColor: '#009387' }}
+      
     >
       <Tab.Screen
+      
         name="Dashboard"
         component={HomeStackScreen}
+        
         options={{
           tabBarLabel: 'Dashboard',
           tabBarColor: '#009387',
@@ -60,7 +71,7 @@ export function MainTabScreen({navigation}) {
           ),
         }}
       />
-       <Tab.Screen
+        <Tab.Screen
         name="Profile"
         component={ProfileStackScreen}
         options={{
@@ -71,9 +82,17 @@ export function MainTabScreen({navigation}) {
           ),
         }}
       />
+      
     </Tab.Navigator>
   );
+
+
+  
+
+
 }
+
+
 
 const HomeStackScreen = () => (
 <dashboardStack.Navigator screenOptions={{
@@ -120,7 +139,10 @@ const MessageStackScreen = () => (
 </messageStack.Navigator>
 );
 
-const ProfileStackScreen = () => (
+
+
+const ProfileStackScreen = ({navigation}) => (
+ 
   <profileStack.Navigator screenOptions={{
           headerStyle: {
           backgroundColor: '#009387',
@@ -129,11 +151,51 @@ const ProfileStackScreen = () => (
           headerTitleStyle: {
           fontWeight: 'bold'
           },
-          headerBackTitle: 'Back'
+          headerBackTitle: 'Back', 
+          headerRight: () => (
+            <View style={{marginRight:20}}>
+
+          
+            <MaterialCommunityIcons
+            name= "account-edit"
+            size={25}
+            
+            color="white"
+            
+            onPress={() => navigation.navigate('EditProfile') }
+            />
+              </View>
+          ),
+          
       }}>
+
+        <profileStack.Screen
+        name = "EditProfile"
+        options={{
+          title: 'Edit Profile',
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+               <View style={{flexDirection: 'row', paddingLeft: 15, alignItems: 'center'}}>
+              <MaterialCommunityIcons name="arrow-left" color="white" size={20}/>
+               <Text style={{color: 'white', fontWeight: '500', marginLeft: 15}}>Go Back</Text>
+            </View>
+            </TouchableOpacity>
+           
+           
+          ),
+
+          headerRight: () => (
+            null
+          )
+
+        }}
+       
+        component={ProfileScreenEdit}
+        />
           <profileStack.Screen name="Profile" component={ProfileScreen} options={{
           
           }} />
   </profileStack.Navigator>
-  );
+);
 
+  

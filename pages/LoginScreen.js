@@ -25,7 +25,14 @@ const LoginScreen = ({navigation}) => {
         secureTextEntry: true
     })
 
+const signIn = () => {
+    var email = data.email
+    var password = data.password
+    auth
+    .signInWithEmailAndPassword(email, password)
+    .catch((error) => alert(error))
 
+}
 
 
 
@@ -131,6 +138,7 @@ const LoginScreen = ({navigation}) => {
                     secureTextEntry={data.secureTextEntry ? true : false}
                     style={styles.textInput}
                     onChangeText={(val) => handlePasswordChange(val)}
+                    onSubmitEditing={signIn}
                     
                     />
 
@@ -161,6 +169,7 @@ const LoginScreen = ({navigation}) => {
                  colors={['#08d4c4', '#01ab9d']}
                  style={styles.signIn}>
                     <TouchableOpacity 
+                    onSubmitEditing={signIn}
 
                      onPress={() => navigation.navigate('MainTab')}>
                          <Text style={[styles.textSign , {color: '#fff', }]}>
