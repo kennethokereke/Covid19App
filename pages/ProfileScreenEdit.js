@@ -66,11 +66,7 @@ const ProfileScreenEdit = ({navigation}) => {
             Keyboard.dismiss()
 
         }}>
-
-       
-        <View style={[styles.container, ]}
-        >
-            <BottomSheet 
+           <BottomSheet 
             ref={ref} 
             snapPoints={[450, 0, 0]} 
             renderContent={renderInner}
@@ -78,6 +74,10 @@ const ProfileScreenEdit = ({navigation}) => {
             initialSnap={1} 
             callbackNode={animationValue} 
             enabledGestureInteraction={true}/>
+       
+        <View style={[styles.container, ]}
+        >
+           
             <SafeAreaView style={[styles.headerBar, {flexDirection: 'row', justifyContent: 'space-between'}]}>
                 
                 <Icon name="arrow-left" size={25} color="#009387" />

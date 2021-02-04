@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { View, StyleSheet, SafeAreaView, ImageBackground, TouchableOpacity} from 'react-native'
+import { View, StyleSheet, SafeAreaView, ImageBackground, TouchableOpacity, TouchableWithoutFeedback} from 'react-native'
 import {StatusBar} from 'expo-status-bar'
 import {
     Avatar,
@@ -11,6 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import BottomSheet from 'reanimated-bottom-sheet'
 import Animated from 'react-native-reanimated'
+
 
 const Profile = ({navigation}) => {
     const renderInner = () => (
@@ -50,6 +51,7 @@ const Profile = ({navigation}) => {
 
     
     return (
+        
         <SafeAreaView style={styles.container}>
              <BottomSheet
             ref={ref} 
@@ -59,6 +61,8 @@ const Profile = ({navigation}) => {
             initialSnap={1} 
             callbackNode={animationValue} 
             enabledGestureInteraction={true}/>
+            <TouchableWithoutFeedback onPress={() => ref.current.snapTo(1)}>
+            
             <Animated.View style={[styles.userInfoSection,{margin: 20, opacity: Animated.add(0.2, Animated.multiply(animationValue, 1.0))}]}>
             <TouchableOpacity onPress={() => ref.current.snapTo(0)}
             >
@@ -94,7 +98,11 @@ const Profile = ({navigation}) => {
                 </TouchableOpacity>
 
             </Animated.View>
+            </TouchableWithoutFeedback>
+            
+            <TouchableWithoutFeedback onPress={() => ref.current.snapTo(1)}>
 
+            
             <View style={styles.userInfoSection}>
                 
 
@@ -103,6 +111,7 @@ const Profile = ({navigation}) => {
                     <Text style={{color: "#777777", marginLeft: 20}}>kennethokereke1@gmail.com</Text>
                 </View>
             </View>
+            </TouchableWithoutFeedback>
 
             <View style={styles.infoBoxWrapper}>
                 <View style={[styles.infoBox, {borderRightColor: '#dddddd', borderRightWidth: 1}]}>
@@ -115,6 +124,7 @@ const Profile = ({navigation}) => {
                 </View>
 
             </View>
+            
 
             <View style={styles.menuWrapper}>
             {/* <TouchableRipple onPress={() => navigation.navigate('Edit')}>
@@ -135,9 +145,12 @@ const Profile = ({navigation}) => {
                     </TouchableRipple>
                    
             </View>
+
            
         </SafeAreaView>
+        
     )
+    
 }
 
 
