@@ -128,7 +128,7 @@ const MessageStackScreen = () => (
            <View style={{marginLeft: 20}}>
           <Avatar 
            rounded 
-           source={{ uri: "http://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png" }}/>
+           source={{ uri: auth?.currentUser?.photoURL || "http://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png" }}/>
            </View>)
         
        
@@ -154,6 +154,7 @@ const ProfileStackScreen = ({navigation}) => (
           fontWeight: 'bold'
           },
           headerBackTitle: 'Back', 
+          
           
           
       }}>

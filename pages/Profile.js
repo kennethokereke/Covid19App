@@ -11,6 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import BottomSheet from 'reanimated-bottom-sheet'
 import Animated from 'react-native-reanimated'
+import { auth } from '../Config/Firebase'
 
 
 const Profile = ({navigation}) => {
@@ -70,7 +71,7 @@ const Profile = ({navigation}) => {
 
                     <ImageBackground
                     source={{
-                        uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                        uri: auth?.currentUser?.photoURL  || 'http://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png',
                     }}
                     style={{height: 100, width: 100}}
                     imageStyle={{borderRadius: 35}}
