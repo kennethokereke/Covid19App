@@ -50,6 +50,12 @@ const Profile = ({navigation}) => {
     const ref = useRef()
     const animationValue = new Animated.Value(1)
 
+    const signOutUSer = () => {
+        auth.signOut().then(() => {
+            navigation.replace("LoginScreen")
+        })
+    }
+
     
     return (
         
@@ -136,7 +142,7 @@ const Profile = ({navigation}) => {
 
                         </View>
                     </TouchableRipple> */}
-                    <TouchableRipple onPress={() => {}}>
+                    <TouchableRipple onPress={signOutUSer}>
                         <View style={styles.menuItem}>
                            
                             <Icon name="logout" color="#02d1c0" size={25} />
