@@ -7,7 +7,7 @@ import {
     TextInput,
     StyleSheet,
     TouchableWithoutFeedback,
-    Platform} from 'react-native'
+    Platform, Keyboard, SafeAreaView} from 'react-native'
 
     import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
     import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -62,7 +62,12 @@ const ProfileScreenEdit = ({navigation}) => {
     return (
         
 
-        
+        <TouchableWithoutFeedback onPress={() => {
+            Keyboard.dismiss()
+
+        }}>
+
+       
         <View style={[styles.container, ]}
         >
             <BottomSheet 
@@ -73,6 +78,22 @@ const ProfileScreenEdit = ({navigation}) => {
             initialSnap={1} 
             callbackNode={animationValue} 
             enabledGestureInteraction={true}/>
+            <SafeAreaView style={[styles.headerBar, {flexDirection: 'row', justifyContent: 'space-between'}]}>
+                
+                <Icon name="arrow-left" size={25} color="#009387" />
+             
+                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                <Icon name="arrow-left" size={30} color="white" style={{right: 40}} />
+                </TouchableOpacity>
+               
+                
+                <Icon name="arrow-left" size={25} color="#009387" />
+                
+                <Text style={{marginRight: 24, fontWeight: 'bold', color: 'white',  }}>Edit Profile</Text>
+                <Icon name="arrow-left" size={25} color="#009387" />
+                <Icon name="arrow-left" size={25} color="#009387" />
+                <Icon name="arrow-left" size={25} color="#009387" />
+            </SafeAreaView>
            <TouchableWithoutFeedback onPress={() => ref.current.snapTo(1)}>
           <Animated.View style={{margin: 20, opacity: Animated.add(0.2, Animated.multiply(animationValue, 1.0))}}>
             <View style={{alignItems:'center'}}>
@@ -146,6 +167,7 @@ const ProfileScreenEdit = ({navigation}) => {
           <Text style={styles.panelButtonTitle}>Submit</Text>
           </TouchableOpacity>
         </View>
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -235,6 +257,14 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 0 : -12,
         paddingLeft: 20,
         color: '#05375a'
+    },
+    headerBar: {
+        backgroundColor: '#009387',
+         width: 450, 
+         height: 90, 
+         marginBottom: 30, 
+         justifyContent: 'center', 
+         alignItems: 'center'
     }
 })
 

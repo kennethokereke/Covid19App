@@ -154,20 +154,7 @@ const ProfileStackScreen = ({navigation}) => (
           fontWeight: 'bold'
           },
           headerBackTitle: 'Back', 
-          headerRight: () => (
-            <View style={{marginRight:20}}>
-
           
-            <MaterialCommunityIcons
-            name= "account-edit"
-            size={25}
-            
-            color="white"
-            
-            
-            />
-              </View>
-          ),
           
       }}>
         <profileStack.Screen name="Profile" component={Profile} options={{
