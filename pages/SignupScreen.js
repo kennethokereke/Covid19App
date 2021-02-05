@@ -59,6 +59,7 @@ const SignupScreen = ({navigation}) => {
           authUser.user.updateProfile({
               displayName: name,
           })
+          navigation.replace("LoginScreen")
       })
       
       .catch((error) => alert(error.message))

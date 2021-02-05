@@ -5,18 +5,23 @@
 import HomeScreen from './HomeScreen'
 import ChatScreen from './ChatScreen'
 import ProfileScreen from './Profile'
+import MessageScreen from './Message'
 import {  createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
-import React, { useLayoutEffect } from 'react'
-import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
+import React, { useLayoutEffect, useRef } from 'react'
+import { MaterialCommunityIcons, FontAwesome, AntDesign, Feather } from '@expo/vector-icons';
 
 
 import Entypo from '@expo/vector-icons/Entypo'
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
-import { View, Text, TouchableOpacity } from 'react-native'
-import { Avatar } from 'react-native-elements'
+import { View, Text, TouchableOpacity, Touchable } from 'react-native'
+import { Avatar, colors } from 'react-native-elements'
 import { auth } from '../Config/Firebase'
-import ProfileScreenEdit from './ProfileScreenEdit'
+import BottomSheet from 'reanimated-bottom-sheet'
+import Animated from 'react-native-reanimated'
+
+
 import Profile from './Profile'
+
 
 
 
@@ -27,13 +32,21 @@ const messageStack = createStackNavigator()
 const profileStack = createStackNavigator()
 
 
+ 
+
+
+
+
 const Tab = createMaterialBottomTabNavigator();
 
 
 
 
 
-export function MainTabScreen() {
+export default function MainTabScreen({navigation}) {
+  
+
+
 
 
 
@@ -114,7 +127,10 @@ const HomeStackScreen = () => (
 </dashboardStack.Navigator>
 );
 
-const MessageStackScreen = () => (
+
+
+const MessageStackScreen = ({navigation}) => (
+  
 <messageStack.Navigator screenOptions={{
         headerStyle: {
         backgroundColor: '#009387',
@@ -129,7 +145,26 @@ const MessageStackScreen = () => (
           <Avatar 
            rounded 
            source={{ uri: auth?.currentUser?.photoURL || "http://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png" }}/>
-           </View>)
+           </View>),
+           headerRight: () => (
+            <View style={{
+              flexDirection: 'row',
+              width: 80,
+              marginRight: 20,
+              justifyContent: 'space-between',
+          
+            }}>
+         
+            
+            <View/>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => {
+              navigation.navigate('EditMessage')
+            }} >
+              <Feather name="edit" size={24} color="white"/>
+            </TouchableOpacity>
+           
+            </View>
+          )
         
        
        
@@ -144,6 +179,7 @@ const MessageStackScreen = () => (
 
 
 const ProfileStackScreen = ({navigation}) => (
+  
  
   <profileStack.Navigator screenOptions={{
           headerStyle: {
@@ -154,6 +190,9 @@ const ProfileStackScreen = ({navigation}) => (
           fontWeight: 'bold'
           },
           headerBackTitle: 'Back', 
+          
+
+          
           
           
           
@@ -169,6 +208,8 @@ const ProfileStackScreen = ({navigation}) => (
 
   
 );
+
+
 
 
 

@@ -14,7 +14,8 @@ import Animated from 'react-native-reanimated'
 import { auth } from '../Config/Firebase'
 
 
-const Profile = ({navigation}) => {
+
+const Profile = ({navigation,props}) => {
     const renderInner = () => (
         <View style={styles.panel}>
              <View style={{alignItems: 'center'}}>
@@ -55,6 +56,8 @@ const Profile = ({navigation}) => {
             navigation.replace("LoginScreen")
         })
     }
+
+
 
     
     return (

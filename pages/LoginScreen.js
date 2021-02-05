@@ -29,7 +29,9 @@ const signIn = () => {
     var email = data.email
     var password = data.password
     auth
-    .signInWithEmailAndPassword(email, password)
+    .signInWithEmailAndPassword(email, password).then(() => {
+        navigation.replace("MainTab")
+    })
     .catch((error) => alert(error))
 
 }
@@ -171,7 +173,7 @@ const signIn = () => {
                     <TouchableOpacity 
                     onSubmitEditing={signIn}
 
-                     onPress={() => navigation.navigate('MainTab')}>
+                     onPress={signIn}>
                          <Text style={[styles.textSign , {color: '#fff', }]}>
                         Sign In
                     </Text>
